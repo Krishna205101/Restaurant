@@ -1,0 +1,216 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Feedback</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <form [formGroup]="formGroup" (ngSubmit)=Submission(formGroup.value)>
+    <div id="container">
+
+
+      <ion-row>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+          <p>We are with you</p>
+        </ion-col>
+        <ion-col>
+          <ion-button color="secondary" type="submit" [disabled]="!formGroup.valid">Done
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div id="Form">
+      <div>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+
+              <ion-item color="primary">
+                <ion-label position="fixed">Mobile</ion-label>
+                <ion-input type="number" formControlName="mobile" name="moblie" (change)="checkCustomer(mobile)">
+                </ion-input>
+              </ion-item>
+
+              <div *ngFor="let error of errorMessages.mobile">
+                <ng-container *ngIf="mobile.hasError(error.type) && (mobile.dirty || mobile.touched)">
+                  <small class="error-message">{{error.message}}</small>
+                </ng-container>
+              </div>
+              <br>
+
+
+              <ion-item color="primary">
+                <ion-label position="fixed">FirstName</ion-label>
+                <ion-input type="text" formControlName="firstname" name="name"></ion-input>
+              </ion-item>
+
+              <div *ngFor="let error of errorMessages.firstname">
+                <ng-container *ngIf="firstname.hasError(error.type) && (firstname.dirty || firstname.touched)">
+                  <small class="error-message">{{error.message}}</small>
+                </ng-container>
+              </div>
+              <br>
+
+              <ion-item color="primary">
+                <ion-label position="fixed">LastName</ion-label>
+                <ion-input type="text" formControlName="lastname" name="name"></ion-input>
+              </ion-item>
+
+              <div *ngFor="let error of errorMessages.lastname">
+                <ng-container *ngIf="lastname.hasError(error.type) && (lastname.dirty || lastname.touched)">
+                  <small class="error-message">{{error.message}}</small>
+                </ng-container>
+              </div>
+              <br>
+
+              <ion-item color="primary">
+                <ion-label position="fixed">Email</ion-label>
+                <ion-input type="email" formControlName="email" name="email"></ion-input>
+              </ion-item>
+
+              <div *ngFor="let error of errorMessages.email">
+                <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+                  <small class="error-message">{{error.message}}</small>
+                </ng-container>
+              </div>
+              <br>
+
+              <ion-item color="primary">Event Type
+                <ion-select slot="end" formControlName="event" name="event">
+                  <div *ngFor="let event of eventsList">
+                    <ion-select-option  value="{{event.Id}}">{{event.EventTypes}}
+                    </ion-select-option>
+                  </div>
+                </ion-select>
+              </ion-item>
+              <br>
+
+
+              <ion-item color="primary">
+                <ion-label position="fixed">Event Date</ion-label>
+                <ion-datetime displayFormat="DD/MM/YYYY" name="eventDate" formControlName="eventDate"></ion-datetime>
+              </ion-item>
+
+              <br>
+
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-row>
+                <ion-col size="6"></ion-col>
+                <ion-col>Excellent</ion-col>
+                <ion-col>Good </ion-col>
+                <ion-col>Average</ion-col>
+              </ion-row>
+              <br>
+
+              <ion-radio-group formControlName="foodRating">
+
+                <ion-row>
+
+                  <ion-col size="6">
+                    How is our food:
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-radio class="excellent" value="10"></ion-radio>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-radio class="good" value="7"></ion-radio>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-radio class="average" value="3"></ion-radio>
+                  </ion-col>
+
+                </ion-row>
+
+              </ion-radio-group>
+
+
+              <br>
+
+              <ion-radio-group formControlName="serviceRating">
+
+                <ion-row>
+
+                  <ion-col size="6">
+                    How is our Service:
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-radio class="excellent" value="10"></ion-radio>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-radio class="good" value="6"></ion-radio>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-radio class="average" value="2"></ion-radio>
+                  </ion-col>
+
+                </ion-row>
+
+              </ion-radio-group>
+
+              <br>
+
+              <ion-radio-group formControlName="ambienceRating">
+
+                <ion-row>
+
+                  <ion-col size="6">
+                    How is our ambience:
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-radio class="excellent" value="10"></ion-radio>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-radio class="good" value="5"></ion-radio>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-radio class="average" value="0"></ion-radio>
+                  </ion-col>
+
+                </ion-row>
+
+              </ion-radio-group>
+
+            </ion-col>
+
+          </ion-row>
+
+        </ion-grid>
+
+      </div>
+
+      <div>
+
+        <p>Any other comments/suggestions</p>
+
+        <ion-item color="primary">
+
+          <ion-textarea rows="6" cols="20" placeholder="There is" formControlName="comments" name="comments" required>
+
+          </ion-textarea>
+
+        </ion-item>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</ion-content>

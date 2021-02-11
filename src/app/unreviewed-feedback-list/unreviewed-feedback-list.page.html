@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>UnreviewedFeedbackList</ion-title>
+    <ion-searchbar (ionInput)="search($event)" slot="end"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>FirstName</ion-col>
+      <ion-col>LastName</ion-col>
+      <ion-col>PhoneNumber</ion-col>
+      <ion-col>VisitedDate</ion-col>
+      <ion-col>Feedback</ion-col>
+      <ion-col>Review</ion-col>
+    </ion-row>
+    <ion-row
+      *ngFor="let data of List | paginate:{ id:'listing_pagination',itemsPerPage: 10, currentPage: page, totalItems: totalRecords}">
+      <ion-col>{{data.FirstName}}</ion-col>
+      <ion-col>{{data.LastName}}</ion-col>
+      <ion-col>{{data.PhoneNumber}}</ion-col>
+      <ion-col>{{data.VisitedDate | date:'dd/MM/yyyy'}}</ion-col>
+      {{progress(data.Overall)}}
+      {{getFoodRating(data.FoodRating)}}
+      {{getServiceRating(data.ServiceRating)}}
+      {{getAmbienceRating(data.AmbienceRating)}}
+      <ion-col>
+        <ion-row>
+          <ion-progress-bar value="{{progressed}}" color="{{progressColor}}"></ion-progress-bar>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-icon name="happy" color="{{foodColor}}"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="happy" color="{{serviceColor}}"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="happy" color="{{ambienceColor}}"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <ion-button size="small" (click)="Review(data)">
+          <ion-icon name="pencil-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div id="page">
+    <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page=$event">
+    </pagination-controls>
+  </div>
+
+</ion-content>

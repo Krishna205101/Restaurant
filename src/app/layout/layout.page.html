@@ -1,0 +1,40 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="top">
+
+    <ion-grid>
+      <ion-row size="4">
+        <ion-col align="left">
+          <img src="assets/925916447s.jpg" height="60" width="250">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-tab-button tab="Customers-List">
+      <ion-icon name="List"></ion-icon>
+      <ion-label>Customers</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="Send-SMS">
+      <ion-icon name="send-outline"></ion-icon>
+      <ion-label>SMS</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="Events">
+      <ion-icon name="alarm-outline"></ion-icon>
+      <ion-label>Events</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="FeedbackList">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label>Feedbacks</ion-label>
+    </ion-tab-button>
+
+    <ion-button color="danger" (click)="logout()">
+      <ion-icon name="power" color="light"></ion-icon>
+    </ion-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>

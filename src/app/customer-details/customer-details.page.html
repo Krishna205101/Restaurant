@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>CustomerDetails</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Id</ion-col>
+      <ion-col>{{details.Id}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>FirstName</ion-col>
+      <ion-col>{{details.FirstName}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>LastName</ion-col>
+      <ion-col>{{details.LastName}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>EmailId</ion-col>
+      <ion-col>{{details.EmailId}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>PhoneNumber</ion-col>
+      <ion-col>{{details.PhoneNumber}}</ion-col>
+    </ion-row>
+
+
+    <!-- <ion-row>
+      <ion-col>Comments</ion-col>
+      <ion-col>{{details.Comments}}</ion-col>
+    </ion-row>
+    <ion-row class="Feedback">
+      <ion-col>Food Rating</ion-col>
+      <ion-col>{{details.CustomerFeedback.FoodRating}}</ion-col>
+    </ion-row>
+    <ion-row class="Feedback">
+      <ion-col>Service Rating</ion-col>
+      <ion-col>{{details.CustomerFeedback.ServiceRating}}</ion-col>
+    </ion-row>
+    <ion-row class="Feedback">
+      <ion-col>Ambience Rating</ion-col>
+      <ion-col>{{details.CustomerFeedback.AmbienceRating}}</ion-col>
+    </ion-row> -->
+
+    <div class="Feedback">
+      <ion-row>
+        <ion-col>Feedback</ion-col>
+        <ion-col>Customer Comments</ion-col>
+        <ion-col>Manager Comments</ion-col>
+      </ion-row>
+    </div>
+
+  </ion-grid>
+</ion-content>

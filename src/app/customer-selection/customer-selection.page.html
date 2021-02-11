@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Customer-Selection</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-grid>
+
+      <ion-row>
+
+        <ion-col size="0.5">
+          <ion-checkbox [(ngModel)]="bulkCheck" (ionChange)="selectAll($event)"></ion-checkbox>
+        </ion-col>
+
+        <ion-col>
+          Customer Name
+        </ion-col>
+
+        <ion-col>
+          Customer Email
+        </ion-col>
+
+        <ion-col>
+          Mobile Number
+        </ion-col>
+
+        <ion-col size="1.5">
+          <ion-button (click)="sendBulksms()">Send SMS</ion-button>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row
+        *ngFor="let customer of customerList | paginate:{ id:'listing_pagination',itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
+
+        <ion-col size="0.5">
+          <ion-checkbox [checked]="check" (ionChange)="Listing($event,customer)"></ion-checkbox>
+        </ion-col>
+
+        <ion-col>
+          {{customer.FirstName}}
+        </ion-col>
+
+        <ion-col>
+          {{customer.EmailId}}
+        </ion-col>
+
+        <ion-col>
+          {{customer.PhoneNumber}}
+        </ion-col>
+
+        <ion-col size="1.5">
+          <ion-button (click)="sendSms(customer)">Send SMS</ion-button>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+
+    <div id="page">
+      <pagination-controls id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="pageChange($event)">
+      </pagination-controls>
+    </div>
+
+  </div>
+
+</ion-content>

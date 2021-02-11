@@ -1,0 +1,12 @@
+<ion-content>
+  <h6>Customer Feedback:</h6>
+  <p>{{Feedback}}</p>
+  <form>
+    <h6>Manager Comments: </h6>
+    <ion-item>
+      <ion-textarea rows="5" cols="10" name="review" placeholder="Enter your review" [(ngModel)]="review" required>
+      </ion-textarea>
+    </ion-item>
+    <ion-button (click)="isReviewed()" slot="end">OK</ion-button>
+  </form>
+</ion-content>

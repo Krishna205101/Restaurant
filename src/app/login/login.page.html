@@ -1,0 +1,20 @@
+<ion-content>
+  <div class="card">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle><img src="assets/925916447s.jpg" align="center" height="60" width="300"></ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form>
+      <ion-input type="text" placeholder="Name" name="name" [(ngModel)]="user.name" required></ion-input>
+      <ion-input type="password" placeholder="Password" name="password" [(ngModel)]="user.password" required></ion-input>
+      <div>
+        <p>{{message}}</p>
+      </div>
+      <ion-button type="reset" (click)="Login()">Login</ion-button>
+    </form>
+    </ion-card-content>
+  </ion-card>
+</div>
+</ion-content>
