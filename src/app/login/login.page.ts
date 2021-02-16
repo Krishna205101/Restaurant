@@ -14,9 +14,9 @@ export class LoginPage implements OnInit {
   status = <any>[];
   message = '';
   validUsers = [
-    { name: 'Khaan@123', password: 'khaansaab', level: 1 },
-    { name: 'Khaansaab', password: 'khaan@123', level: 2 },
-    { name: 'Khaanadmin', password: 'khaansaab@123', level: 3 }
+    { name: 'Khaansaab', password: 'khaansaab@1', level: 1 },
+    { name: 'Khaansaab', password: 'khaansaab@12', level: 2 },
+    { name: 'Khaansaab', password: 'khaansaab@123', level: 3 }
   ]
   user = {
     name: '',
@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
 
     for (let i = 0; i < this.validUsers.length; i++) {
 
-      if (this.user.name == this.validUsers[i].name && this.user.password == this.validUsers[i].password) {
+      if (this.user.name.toLowerCase() == this.validUsers[i].name.toLowerCase() && this.user.password == this.validUsers[i].password) {
 
         this.status = this.validUsers[i].level
         sessionStorage.setItem('loginStatus', this.status)
@@ -40,7 +40,7 @@ export class LoginPage implements OnInit {
 
       }
 
-      else if (this.user.name == "admin" && this.user.password == "admin") {
+      else if (this.user.name.toLowerCase() == "admin" && this.user.password == "admin") {
         this.route.navigate(['/admindashboard'])
       }
 
@@ -51,8 +51,6 @@ export class LoginPage implements OnInit {
 
       }
     }
-
-    console.log(this.status)
 
     if (this.status != 0) {
 

@@ -29,18 +29,19 @@ ion-radio {
     height         : 32px;
     width          : 32px;
 
+
     &.excellent {
         background     : url('../emojis/excellent.png') center;
         background-size: cover;
         color          : var(--ion-color-teritary-contrast);
     }
-    
+
     &.good {
         background     : url('../emojis/good.png') center;
         background-size: cover;
         color          : var(--ion-color-teritary-contrast);
     }
-    
+
     &.average {
         background     : url('../emojis/average.png') center;
         background-size: cover;
@@ -49,5 +50,6 @@ ion-radio {
 
 }
 
-
-
+.Feedback {
+    text-align: center;
+}

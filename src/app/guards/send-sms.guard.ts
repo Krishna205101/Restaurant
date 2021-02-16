@@ -12,7 +12,6 @@ export class SendSmsGuard implements CanActivate {
 
     this.authenticationService.level.subscribe(x=>{
       this.level=x
-      console.log(x)
     })
 
    }

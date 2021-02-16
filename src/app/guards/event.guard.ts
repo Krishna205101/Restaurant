@@ -11,7 +11,6 @@ export class EventGuard implements CanActivate {
 
     this.authenticationService.level.subscribe(x => {
       this.level = parseInt(x)
-      console.log(x)
     })
 
   }

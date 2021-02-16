@@ -25,7 +25,6 @@ export class ReviewedFeedbackListPage implements OnInit {
     service.reviewedList.subscribe(x => {
       this.List=x;
       this.data=x;
-      console.log(this.List)
     })
 
     this.totalRecords = this.List.length
@@ -44,7 +43,6 @@ export class ReviewedFeedbackListPage implements OnInit {
 
   progress(v) {
     this.progressed = (v / 100).toFixed(1)
-    // console.log(this.progressed)
     if(v>=75){
       this.progressColor='success'
     }
@@ -68,7 +66,6 @@ export class ReviewedFeedbackListPage implements OnInit {
     else {
       this.foodColor = 'danger'
     }
-    // console.log(food)
   }
 
   getServiceRating(service) {

@@ -5,8 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
 import { FeedbackService } from '../services/feedback.service';
 import { EventService } from '../services/event.service';
-import { Router } from '@angular/router';
 import { TablePage } from '../table/table.page'
+import { UnreviewedFeedbackListPage } from '../unreviewed-feedback-list/unreviewed-feedback-list.page';
 
 @Component({
   selector: 'app-feedback',
@@ -80,7 +80,6 @@ export class FeedbackPage {
   formGroup: FormGroup;
   constructor(public formBuilder: FormBuilder,
     private theme: ThemeService,
-    private router: Router,
     private alert: AlertController,
     private modalContoller: ModalController,
     private customerService: CustomerService,
@@ -89,11 +88,7 @@ export class FeedbackPage {
 
 
 
-    console.log(this.eventDate)
-    customerService.shareList.subscribe(x => {
-      this.customersList = x
-      console.log(x)
-    })
+    this.eventService.getEvents()
 
     this.formGroup = formBuilder.group({
       firstname: [
@@ -131,8 +126,12 @@ export class FeedbackPage {
 
     });
 
-    this.eventService.List.subscribe(x => {
+
+    this.eventService.getEvents()
+    this.eventService.EventTypesList.subscribe(x => {
       this.eventsList = x
+      console.log(this.eventsList)
+      console.log(x)
     })
   }
 
@@ -181,6 +180,7 @@ export class FeedbackPage {
 
   call() {
     new TablePage(this.customerService, this.modalContoller);
+    new UnreviewedFeedbackListPage(this.feedbackService, this.modalContoller)
   }
 
   checkCustomer(mobile) {

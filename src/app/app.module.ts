@@ -10,17 +10,19 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {NgxPaginationModule} from 'ngx-pagination';
-import {HttpClientModule} from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, 
-    IonicModule.forRoot(), 
-    AppRoutingModule, 
-    FormsModule, 
+  imports: [BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
     IonicStorageModule.forRoot(),

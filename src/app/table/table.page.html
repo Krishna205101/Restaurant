@@ -11,22 +11,22 @@
 <ion-content>
   <ion-grid class="grid">
     <ion-row>
-      <ion-col>Customer Name</ion-col>
-      <ion-col>Customer Email</ion-col>
-      <ion-col>Customer Mobile</ion-col>
-      <ion-col>More details</ion-col>
-      <ion-col>Options</ion-col>
+      <ion-col size-md="3">Customer Name</ion-col>
+      <ion-col size-md="3">Customer Email</ion-col>
+      <ion-col size-md="2.5">Customer Mobile</ion-col>
+      <ion-col size-md="2">More details</ion-col>
+      <ion-col size-md="1.5">Options</ion-col>
     </ion-row>
     <div *ngIf="customersList != null ">
       <ion-row
         *ngFor="let customer of customersList | paginate:{ id:'listing_pagination',itemsPerPage: 10, currentPage: page, totalItems: totalCustomers}">
-        <ion-col>{{customer.FirstName}}</ion-col>
-        <ion-col>{{customer.EmailId}}</ion-col>
-        <ion-col>{{customer.PhoneNumber}}</ion-col>
-        <ion-col>
+        <ion-col size-md="3">{{customer.FirstName}}</ion-col>
+        <ion-col size-md="3">{{customer.EmailId}}</ion-col>
+        <ion-col size-md="2.5">{{customer.PhoneNumber}}</ion-col>
+        <ion-col size-md="2">
           <ion-button (click)="Moredetails(customer)">More</ion-button>
         </ion-col>
-        <ion-col>
+        <ion-col size-md="1.5">
           <ion-col>
             <ion-button size="small" (click)="editCustomer(customer)">
               <ion-icon name="pencil-outline"></ion-icon>

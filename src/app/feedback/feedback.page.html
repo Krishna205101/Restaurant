@@ -27,12 +27,12 @@
     <div id="Form">
       <div>
         <ion-grid>
-          <ion-row>
+          <ion-row size-xs="12" size-sm="12" size-md="5" size-lg="6">
             <ion-col>
 
               <ion-item color="primary">
-                <ion-label position="fixed">Mobile</ion-label>
-                <ion-input type="number" formControlName="mobile" name="moblie" (change)="checkCustomer(mobile)">
+                <ion-input type="number" formControlName="mobile" name="moblie" (change)="checkCustomer(mobile)"
+                  placeholder="Mobile">
                 </ion-input>
               </ion-item>
 
@@ -45,8 +45,7 @@
 
 
               <ion-item color="primary">
-                <ion-label position="fixed">FirstName</ion-label>
-                <ion-input type="text" formControlName="firstname" name="name"></ion-input>
+                <ion-input type="text" formControlName="firstname" name="firstname" placeholder="FirstName"></ion-input>
               </ion-item>
 
               <div *ngFor="let error of errorMessages.firstname">
@@ -57,8 +56,7 @@
               <br>
 
               <ion-item color="primary">
-                <ion-label position="fixed">LastName</ion-label>
-                <ion-input type="text" formControlName="lastname" name="name"></ion-input>
+                <ion-input type="text" formControlName="lastname" name="lastname" placeholder="LastName"></ion-input>
               </ion-item>
 
               <div *ngFor="let error of errorMessages.lastname">
@@ -69,8 +67,7 @@
               <br>
 
               <ion-item color="primary">
-                <ion-label position="fixed">Email</ion-label>
-                <ion-input type="email" formControlName="email" name="email"></ion-input>
+                <ion-input type="email" formControlName="email" name="email" placeholder="E-mail"></ion-input>
               </ion-item>
 
               <div *ngFor="let error of errorMessages.email">
@@ -80,10 +77,10 @@
               </div>
               <br>
 
-              <ion-item color="primary">Event Type
-                <ion-select slot="end" formControlName="event" name="event">
+              <ion-item color="primary">
+                <ion-select slot="start" formControlName="event" name="event" placeholder="Event Type">
                   <div *ngFor="let event of eventsList">
-                    <ion-select-option  value="{{event.Id}}">{{event.EventTypes}}
+                    <ion-select-option value="{{event.Id}}">{{event.EventTypes}}
                     </ion-select-option>
                   </div>
                 </ion-select>
@@ -92,21 +89,19 @@
 
 
               <ion-item color="primary">
-                <ion-label position="fixed">Event Date</ion-label>
-                <ion-datetime displayFormat="DD/MM/YYYY" name="eventDate" formControlName="eventDate"></ion-datetime>
+                <ion-datetime displayFormat="DD/MM/YYYY" name="eventDate" formControlName="eventDate"
+                  placeholder="Event Date"></ion-datetime>
               </ion-item>
 
               <br>
 
             </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-row>
-                <ion-col size="6"></ion-col>
-                <ion-col>Excellent</ion-col>
-                <ion-col>Good </ion-col>
-                <ion-col>Average</ion-col>
+            <ion-col size-xs="12" size-sm="12" size-md="7" size-lg="6">
+              <ion-row class="Feedback">
+                <ion-col size-md="5" size-sm="6"></ion-col>
+                <ion-col size-md="2.5" size-sm="2">Average</ion-col>
+                <ion-col size-md="2" size-sm="2">Good </ion-col>
+                <ion-col size-md="2.5" size-sm="2">Excellent</ion-col>
               </ion-row>
               <br>
 
@@ -118,16 +113,16 @@
                     How is our food:
                   </ion-col>
 
-                  <ion-col>
-                    <ion-radio class="excellent" value="10"></ion-radio>
+                  <ion-col size="2">
+                    <ion-radio class="average" value="3"></ion-radio>
                   </ion-col>
 
-                  <ion-col>
+                  <ion-col size="2">
                     <ion-radio class="good" value="7"></ion-radio>
                   </ion-col>
 
-                  <ion-col>
-                    <ion-radio class="average" value="3"></ion-radio>
+                  <ion-col size="2">
+                    <ion-radio class="excellent" value="10"></ion-radio>
                   </ion-col>
 
                 </ion-row>
@@ -145,16 +140,16 @@
                     How is our Service:
                   </ion-col>
 
-                  <ion-col>
-                    <ion-radio class="excellent" value="10"></ion-radio>
+                  <ion-col size="2">
+                    <ion-radio class="average" value="2"></ion-radio>
                   </ion-col>
 
-                  <ion-col>
+                  <ion-col size="2">
                     <ion-radio class="good" value="6"></ion-radio>
                   </ion-col>
 
-                  <ion-col>
-                    <ion-radio class="average" value="2"></ion-radio>
+                  <ion-col size="2">
+                    <ion-radio class="excellent" value="10"></ion-radio>
                   </ion-col>
 
                 </ion-row>
@@ -171,16 +166,16 @@
                     How is our ambience:
                   </ion-col>
 
-                  <ion-col>
-                    <ion-radio class="excellent" value="10"></ion-radio>
+                  <ion-col size="2">
+                    <ion-radio class="average" value="0"></ion-radio>
                   </ion-col>
 
-                  <ion-col>
+                  <ion-col size="2">
                     <ion-radio class="good" value="5"></ion-radio>
                   </ion-col>
 
-                  <ion-col>
-                    <ion-radio class="average" value="0"></ion-radio>
+                  <ion-col size="2">
+                    <ion-radio class="excellent" value="10"></ion-radio>
                   </ion-col>
 
                 </ion-row>

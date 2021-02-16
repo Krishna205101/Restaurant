@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuard } from './guards/authentication.guard';
+
 
 const routes: Routes = [
   {
@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'textarea',
     loadChildren: () => import('./textarea/textarea.module').then( m => m.TextareaPageModule)
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
 ];
 

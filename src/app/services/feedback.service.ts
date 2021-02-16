@@ -32,12 +32,10 @@ export class FeedbackService {
   getFeedbackId(feedback) {
     this.Feedback = feedback.FeedbackComment
     this.id = feedback.Id
-    console.log(this.id)
   }
 
   saveCustomerFeedback(feedback) {
     this.average = (feedback.CustomerFeedback.FoodRating + feedback.CustomerFeedback.ServiceRating + feedback.CustomerFeedback.AmbienceRating) * 100 / 30
-    console.log(feedback);
     this.http.post(environment.baseurl + "Feedback/Save", {
       CustomerID: feedback.CustomerId,
       VisitedDate: this.date,
@@ -69,12 +67,11 @@ export class FeedbackService {
         EventTypeId: feedback.EventType,
         EventDateTime: feedback.EventDate
       }
-    }).toPromise().then(x => console.log(x))
+    }).toPromise()
   }
 
   updateFeedback(review) {
     this.http.post(environment.baseurl + 'Feedback/Update', { Id: this.id, IsReviewd: true, ReviewDate: this.date, ManagerComment: review, ReviewedBy: 1 }).toPromise()
-    console.log(this.id)
   }
 
   reviewedFeedbackList() {

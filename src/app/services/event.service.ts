@@ -9,20 +9,29 @@ import { environment } from 'src/environments/environment';
 export class EventService {
 
   private eventsList = new BehaviorSubject<any>([]);
+  private eventTypes = new BehaviorSubject<any>([]);
 
   public List= this.eventsList.asObservable();
+  public EventTypesList = this.eventTypes.asObservable();
 
   constructor(private http: HttpClient) { 
-    this.getEventInfo()
+
+    
   }
 
   addEvent() {
 
   }
 
-  getEventInfo() {
-    this.http.post(environment.baseurl+'Event/Types', { title: 'Event' }).toPromise().then(x => {
+  getEvents(){
+    this.http.post(environment.baseurl+'Event/Types', { title: 'EventTypes' }).toPromise().then(x => {
+      this.eventTypes.next(x)
       console.log(x)
+    })
+  }
+
+  getEventInfo() {
+    this.http.post(environment.baseurl+'Event/UpcomingEvents', { title: 'Event' }).toPromise().then(x => {
       this.eventsList.next(x)
     }) 
   }

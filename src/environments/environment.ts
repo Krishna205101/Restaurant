@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseurl : 'http://192.168.43.203/khan/api/'
+  baseurl : 'http://192.168.43.203/prod/api/'
 };
 
 /*

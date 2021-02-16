@@ -12,7 +12,6 @@ export class AuthenticationGuard implements CanActivate {
   constructor(private auth: AuthenticationService, private route: Router) {
     this.auth.level.subscribe(x=>{
       this.level=x
-      console.log(x)
     })
    }
 
@@ -23,7 +22,6 @@ export class AuthenticationGuard implements CanActivate {
       return true
     }
     else{
-      console.log(this.level)
       return this.route.parseUrl('/');
     }
   }

@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Customer-Selection</ion-title>
+    <ion-searchbar (ionInput)="search($event)" slot="end"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -10,48 +11,49 @@
 
       <ion-row>
 
-        <ion-col size="0.5">
-          <ion-checkbox [(ngModel)]="bulkCheck" (ionChange)="selectAll($event)"></ion-checkbox>
-        </ion-col>
-
         <ion-col>
           Customer Name
         </ion-col>
 
         <ion-col>
-          Customer Email
+          Event Type
         </ion-col>
 
         <ion-col>
           Mobile Number
         </ion-col>
 
-        <ion-col size="1.5">
+        <ion-col size="0.5">
+          <ion-checkbox [(ngModel)]="bulkCheck" (ionChange)="selectAll($event)"></ion-checkbox>
+        </ion-col>
+
+        <ion-col size="2">
           <ion-button (click)="sendBulksms()">Send SMS</ion-button>
         </ion-col>
 
       </ion-row>
 
       <ion-row
-        *ngFor="let customer of customerList | paginate:{ id:'listing_pagination',itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
+        *ngFor="let customer of customersList | paginate:{ id:'listing_pagination',itemsPerPage: 5, currentPage: page, totalItems: totalRecords}">
 
-        <ion-col size="0.5">
-          <ion-checkbox [checked]="check" (ionChange)="Listing($event,customer)"></ion-checkbox>
-        </ion-col>
 
         <ion-col>
           {{customer.FirstName}}
         </ion-col>
 
         <ion-col>
-          {{customer.EmailId}}
+          {{customer.EventType}}
         </ion-col>
 
         <ion-col>
           {{customer.PhoneNumber}}
         </ion-col>
 
-        <ion-col size="1.5">
+        <ion-col size="0.5">
+          <ion-checkbox [checked]="check" (ionChange)="Listing($event,customer)"></ion-checkbox>
+        </ion-col>
+
+        <ion-col size="2">
           <ion-button (click)="sendSms(customer)">Send SMS</ion-button>
         </ion-col>
 

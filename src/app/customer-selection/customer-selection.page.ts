@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../services/authentication.service';
-import { CustomerService } from '../services/customer.service';
+import { EventService } from '../services/event.service';
 
 @Component({
   selector: 'app-customer-selection',
@@ -16,15 +15,21 @@ export class CustomerSelectionPage implements OnInit {
   totalRecords: number;
   check = false;
   bulkCheck = false;
-  customerList: any;
+  customersList: any;
   url: string;
+  List: any;
+  disabled = false;
 
-  constructor(private authService: AuthenticationService, private http: HttpClient, private customerService: CustomerService) {
-    this.totalRecords = this.selectedList.length
+  constructor(private http: HttpClient, private service: EventService) {
 
-    customerService.shareList.subscribe(x => {
-      this.customerList = x
+    service.getEventInfo()
+
+    service.List.subscribe(x => {
+      this.customersList = x
+      this.List = x
     })
+
+    this.totalRecords = this.customersList.length
 
   }
 
@@ -33,20 +38,21 @@ export class CustomerSelectionPage implements OnInit {
     const val = ev.target.checked
     if (val == true) {
       this.selectedList.push(customer)
-      console.log(val)
-      console.log(this.selectedList)
     }
 
     else {
       for (let i = 0; i < this.selectedList.length; i++) {
         if (this.selectedList[i]["PhoneNumber"] == customer.PhoneNumber) {
           this.selectedList.splice(i, 1)
-          console.log(this.selectedList)
         }
       }
       this.bulkCheck = false
     }
 
+    if(this.selectedList != []){
+      this.disabled = true;
+    }
+    console.log(this.selectedList)
   }
 
   selectAll(ev: any) {
@@ -64,17 +70,24 @@ export class CustomerSelectionPage implements OnInit {
 
   sendBulksms() {
 
-    console.log(this.selectedList)
-    this.selectedList = []
-  
+    let string = '';
+    let length = this.selectedList.length
+
+    for (let i = 0; i < length - 1; i++) {
+      string = string + this.selectedList[i].PhoneNumber + ','
+    }
+
+    string = string + this.selectedList[length - 1].PhoneNumber
+    console.log(string)
+    this.url = 'http://websmsapp.in/api/mt/SendSMS?APIKEY=hh9Jz9ll5UOT2WwoNrr6JQ&senderid=KANSAB&channel=Promo&DCS=0&flashsms=0&number=' + string + '&text=test-message&route=4'
+    this.http.get(this.url).subscribe(x => {
+    })
   }
 
   sendSms(customer) {
 
-    console.log(customer)
-    this.url='http://websmsapp.in/api/mt/SendSMS?APIKEY=hh9Jz9ll5UOT2WwoNrr6JQ&senderid=KANSAB&channel=Promo&DCS=0&flashsms=0&number='+customer.PhoneNumber+'&text=test-message&route=4'
-    this.http.get(this.url).subscribe(x=>{
-      console.log(x)
+    this.url = 'http://websmsapp.in/api/mt/SendSMS?APIKEY=hh9Jz9ll5UOT2WwoNrr6JQ&senderid=KANSAB&channel=Promo&DCS=0&flashsms=0&number=' + customer.PhoneNumber + '&text=test-message&route=4'
+    this.http.get(this.url).subscribe(x => {
     })
 
   }
@@ -85,7 +98,17 @@ export class CustomerSelectionPage implements OnInit {
     this.page = ev
     this.bulkCheck = false
     this.check = false
-  
+
+  }
+
+  search(ev: any) {
+    this.customersList = this.List
+    const val = ev.target.value;
+    if (val && val.trim() != '') {
+      this.customersList = this.customersList.filter((item) => {
+        return (item.FirstName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
   ngOnInit() {

@@ -16,11 +16,10 @@ export class TextareaPage implements OnInit {
 
   constructor(private service: FeedbackService, private modal: ModalController, private alert: AlertController) {
     this.Feedback = this.service.Feedback
-    console.log(this.Feedback)
+    
   }
 
   isReviewed() {
-    console.log(this.review)
     if (this.review == null) {
       this.modal.dismiss()
       this.alerting('No')

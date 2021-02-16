@@ -24,7 +24,6 @@ export class TablePage implements OnInit {
     this.service.shareList.subscribe(x => {
       this.customersList = x
       this.List = x
-      console.log(this.customersList)
     })
 
     this.totalCustomers = this.customersList.length
@@ -44,7 +43,7 @@ export class TablePage implements OnInit {
   search(ev: any) {
     this.customersList = this.List
     const val = ev.target.value;
-    if (val != '') {
+    if (val && val.trim() != '') {
       this.customersList = this.customersList.filter((item) => {
         return (item.FirstName.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
@@ -62,7 +61,6 @@ export class TablePage implements OnInit {
 
   editCustomer(customer) {
     this.service.editCustomer(customer)
-    console.log('clicked')
   }
 
   deleteCustomer(customer) {

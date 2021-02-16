@@ -34,11 +34,10 @@ export class CustomerService {
 
 
   editCustomer(customer) {
-    this.http.post(environment.baseurl + 'Customer/Details', { PhoneNumber: customer.PhoneNumber }).toPromise().then(x => console.log(x))
-    console.log(customer.PhoneNumber)
+    this.http.post(environment.baseurl + 'Customer/Details', { PhoneNumber: customer.PhoneNumber }).toPromise()
   }
 
   deleteCustomer(customer) {
-    this.http.post(environment.baseurl + 'Customer/Delete', { PhoneNumber: customer.PhoneNumber }).toPromise().then(x => console.log(x))
+    this.http.post(environment.baseurl + 'Customer/Delete', { PhoneNumber: customer.PhoneNumber }).toPromise()
   }
 }

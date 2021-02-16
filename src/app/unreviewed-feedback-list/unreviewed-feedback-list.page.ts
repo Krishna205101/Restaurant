@@ -27,7 +27,6 @@ export class UnreviewedFeedbackListPage implements OnInit {
     service.UnReviewedList.subscribe(x => {
       this.List = x;
       this.data = x;
-      console.log(x)
     })
     this.totalRecords = this.List.length
 
@@ -35,7 +34,6 @@ export class UnreviewedFeedbackListPage implements OnInit {
 
   async Review(data) {
     this.service.getFeedbackId(data)
-    console.log(data.Id)
     const modal = await this.modalController.create({
       component: TextareaPage,
       cssClass: 'textarea'
@@ -45,7 +43,6 @@ export class UnreviewedFeedbackListPage implements OnInit {
 
   progress(overall) {
     this.progressed = (overall / 100).toFixed(1)
-    // console.log(this.progressed)
     if (overall >= 75) {
       this.progressColor = 'success'
     }

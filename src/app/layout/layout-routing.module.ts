@@ -23,31 +23,9 @@ const routes: Routes = [
         canActivate: [SendSmsGuard],
       },
       {
-        path: 'Events',
-        loadChildren: '../events/events.module#EventsPageModule',
-        canActivate: [EventGuard]
-      },
-      {
         path:'FeedbackList',
         loadChildren:'../feedback-list/feedback-list.module#FeedbackListPageModule',
         canActivate: [EventGuard],
-        // children:[
-        //     {
-        //       path: 'ReviewedList',
-        //       loadChildren: '../reviewed-feedback-list/reviewed-feedback-list.module#ReviewedFeedbackListPageModule',
-        //       canActivate: [EventGuard]
-        //     },
-        //     {
-        //       path: 'UnreviewedList',
-        //       loadChildren: '../unreviewed-feedback-list/unreviewed-feedback-list.module#UnreviewedFeedbackListPageModule',
-        //       canActivate: [EventGuard]
-        //     },
-        //     {
-        //       path: '',
-        //       redirectTo: '/layout/FeedbackList/ReviewedList',
-        //       pathMatch: 'full'
-        //     }
-        //   ]
       },
       {
         path: '',
