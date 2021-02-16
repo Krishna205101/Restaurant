@@ -25,7 +25,8 @@ export class AuthenticationService {
 
   async declineAlert(){
     const alert = await this.alert.create({
-      header: 'Authorized only!',
+      message:'<div class="left"><ion-icon name="alert-circle"></ion-icon></div> <div class="right"> Authorized only!</div>',
+      cssClass:"alert",
       buttons: [
         {
           text: 'Ok',

@@ -32,17 +32,29 @@
 }
 
 .alert {
+
     ion-icon {
-        color: var(--ion-color-danger);
-        font-size: 25px
+        top      : 100%;
+        color    : var(--ion-color-danger);
+        font-size: 25px;
     }
+
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float        : right;
+        padding-right: 15%;
+        font-size    : 20px;
+    }
+
 }
 
-.alert-message{
-    font-size: 50px;
-}
 
-.my-custom-class{
-    --height : 100%;
+
+.my-custom-class {
+    --height: 100%;
     --width : 100%;
 }
