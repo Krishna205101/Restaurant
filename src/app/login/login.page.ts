@@ -32,7 +32,11 @@ export class LoginPage implements OnInit {
 
     for (let i = 0; i < this.validUsers.length; i++) {
 
-      if (this.user.name.toLowerCase() == this.validUsers[i].name.toLowerCase() && this.user.password == this.validUsers[i].password) {
+      if(this.user.name==null || this.user.password==null){
+        this.status=null
+      }
+
+      else if (this.user.name.toLowerCase() == this.validUsers[i].name.toLowerCase() && this.user.password == this.validUsers[i].password) {
 
         this.status = this.validUsers[i].level
         sessionStorage.setItem('loginStatus', this.status)
@@ -60,9 +64,7 @@ export class LoginPage implements OnInit {
     }
 
     else {
-
-      this.message = 'Please enter valid Username and Password'
-
+      this.message='Please enter valid Username and Password'
     }
 
     this.service.loginUpdate(this.status,this.user.name)

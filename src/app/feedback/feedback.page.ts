@@ -88,6 +88,10 @@ export class FeedbackPage {
 
 
 
+    this.customerService.shareList.subscribe(x => {
+      this.customersList = x
+    })
+
     this.eventService.getEvents()
 
     this.formGroup = formBuilder.group({
@@ -130,12 +134,11 @@ export class FeedbackPage {
     this.eventService.getEvents()
     this.eventService.EventTypesList.subscribe(x => {
       this.eventsList = x
-      console.log(this.eventsList)
-      console.log(x)
     })
   }
 
   async Submission(formData: any) {
+
 
     this.feedback = {
       "CustomerId": this.customerId,
@@ -184,6 +187,7 @@ export class FeedbackPage {
   }
 
   checkCustomer(mobile) {
+    
     for (let i = 0; i < this.customersList.length; i++) {
       if (mobile.value == this.customersList[i].PhoneNumber) {
         this.customerId = this.customersList[i].Id

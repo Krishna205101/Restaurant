@@ -26,7 +26,6 @@ export class EventService {
   getEvents(){
     this.http.post(environment.baseurl+'Event/Types', { title: 'EventTypes' }).toPromise().then(x => {
       this.eventTypes.next(x)
-      console.log(x)
     })
   }
 

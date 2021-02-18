@@ -67,6 +67,10 @@ export class TablePage implements OnInit {
     this.service.deleteCustomer(customer)
   }
 
+  pageChange(ev: any) {
+    this.page = ev
+  }
+
   ngOnInit() {
 
   }

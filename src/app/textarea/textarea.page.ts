@@ -35,7 +35,7 @@ export class TextareaPage implements OnInit {
 
   async alerting(no) {
     const alert = await this.alert.create({
-      header: no + 'Comment added',
+      subHeader: no + ' Comments added',
       buttons: [
         {
           text: 'Ok',
