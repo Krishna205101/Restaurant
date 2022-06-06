@@ -26,7 +26,7 @@ export class FeedbackService {
 
   constructor(private http: HttpClient, private service: AuthenticationService) {
     this.service.user.subscribe(x => this.user = x)
-    this.date = this.today.getDate() + '/' + (this.today.getMonth() + 1) + '/' + this.today.getFullYear()
+    this.date = this.today.getMonth() + '/' + (this.today.getDate() + 1) + '/' + this.today.getFullYear()
   }
 
   getFeedbackId(feedback) {

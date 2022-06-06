@@ -35,7 +35,7 @@ export class TextareaPage implements OnInit {
 
   async alerting(no) {
     const alert = await this.alert.create({
-      header: no + 'Comment added',
+      subHeader: no + ' Comments added',
       buttons: [
         {
           text: 'Ok',
@@ -50,7 +50,7 @@ export class TextareaPage implements OnInit {
 
   update() {
     new ReviewedFeedbackListPage(this.service)
-    new UnreviewedFeedbackListPage(this.service, this.modal)
+    // new UnreviewedFeedbackListPage(this.service, this.modal)
   }
 
   ngOnInit() {

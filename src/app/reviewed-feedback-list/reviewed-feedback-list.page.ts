@@ -21,6 +21,7 @@ export class ReviewedFeedbackListPage implements OnInit {
 
   constructor(private service: FeedbackService) {
 
+
     this.service.reviewedFeedbackList()
     service.reviewedList.subscribe(x => {
       this.List=x;

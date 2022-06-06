@@ -27,6 +27,7 @@
 
 .textarea {
     --height       : 39%;
+    --width        : 45%;
     --border-radius: 2%;
     --border-width : 12%;
 }
@@ -57,4 +58,23 @@
 .my-custom-class {
     --height: 100%;
     --width : 100%;
+}
+
+
+
+.textarea {
+    inputs {
+        padding-bottom: 10%;
+    }
+
+    .comment {
+        color         : black;
+        font-size     : 19px;
+        padding-bottom: 30%;
+    }
+}
+
+.thanks {
+    height: 100%;
+    width : 100%
 }

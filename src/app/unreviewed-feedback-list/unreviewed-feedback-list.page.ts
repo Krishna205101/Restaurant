@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from '../services/feedback.service';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { TextareaPage } from '../textarea/textarea.page';
 
 
@@ -20,8 +20,9 @@ export class UnreviewedFeedbackListPage implements OnInit {
   ambienceColor = ''
   progressColor: string;
   data = <any>[]
+  d: any;
 
-  constructor(private service: FeedbackService, private modalController: ModalController) {
+  constructor(private service: FeedbackService, private modalController: ModalController, private alert: AlertController) {
 
     service.unReviewedFeedbackList()
     service.UnReviewedList.subscribe(x => {
@@ -32,13 +33,32 @@ export class UnreviewedFeedbackListPage implements OnInit {
 
   }
 
-  async Review(data) {
-    this.service.getFeedbackId(data)
-    const modal = await this.modalController.create({
-      component: TextareaPage,
-      cssClass: 'textarea'
-    });
-    return await modal.present();
+  async Review(info) {
+    this.service.getFeedbackId(info)
+    this.d = this.service.Feedback
+    const alert = await this.alert.create({
+      header: 'Customer Feedback :',
+      subHeader: this.d,
+      message: '<div class="comment">Manager Comments:</div>',
+      cssClass: 'textarea',
+      inputs: [
+        {
+          name: 'comment',
+          type: 'textarea',
+          placeholder: 'Please enter your comments'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Ok',
+          handler: (data) => {
+            console.log(data.comment)
+            this.isReviewed(data.comment, info)
+          }
+        }
+      ]
+    })
+    await alert.present()
   }
 
   progress(overall) {
@@ -98,6 +118,46 @@ export class UnreviewedFeedbackListPage implements OnInit {
     else {
       this.ambienceColor = 'danger'
     }
+  }
+
+  isReviewed(review, info) {
+    console.log(info)
+    if (review == '') {
+      this.alert.dismiss()
+      this.alerting('No')
+
+    }
+    else {
+      this.service.updateFeedback(review)
+      this.alert.dismiss()
+      this.alerting('')
+      this.update(info)
+    }
+  }
+
+  async alerting(no) {
+    const alert = await this.alert.create({
+      subHeader: no + ' Comments added',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  update(info) {
+    console.log('got')
+    for (let i = 0; i < this.List.length; i++) {
+      if (this.List[i].PhoneNumber == info.PhoneNumber) {
+        this.List.splice(i, 1)
+      }
+    }
+    this.data = this.List;
   }
 
   ngOnInit() {

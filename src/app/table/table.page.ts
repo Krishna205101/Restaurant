@@ -19,14 +19,13 @@ export class TablePage implements OnInit {
 
   constructor(private service: CustomerService, private modalController: ModalController) {
 
-
     this.service.customerList()
     this.service.shareList.subscribe(x => {
       this.customersList = x
       this.List = x
     })
-
     this.totalCustomers = this.customersList.length
+    
   }
 
 
@@ -65,6 +64,10 @@ export class TablePage implements OnInit {
 
   deleteCustomer(customer) {
     this.service.deleteCustomer(customer)
+  }
+
+  pageChange(ev: any) {
+    this.page = ev
   }
 
   ngOnInit() {

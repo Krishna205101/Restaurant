@@ -6,7 +6,6 @@ import { CustomerService } from '../services/customer.service';
 import { FeedbackService } from '../services/feedback.service';
 import { EventService } from '../services/event.service';
 import { TablePage } from '../table/table.page'
-import { UnreviewedFeedbackListPage } from '../unreviewed-feedback-list/unreviewed-feedback-list.page';
 
 @Component({
   selector: 'app-feedback',
@@ -88,6 +87,10 @@ export class FeedbackPage {
 
 
 
+    this.customerService.shareList.subscribe(x => {
+      this.customersList = x
+    })
+
     this.eventService.getEvents()
 
     this.formGroup = formBuilder.group({
@@ -130,12 +133,11 @@ export class FeedbackPage {
     this.eventService.getEvents()
     this.eventService.EventTypesList.subscribe(x => {
       this.eventsList = x
-      console.log(this.eventsList)
-      console.log(x)
     })
   }
 
   async Submission(formData: any) {
+
 
     this.feedback = {
       "CustomerId": this.customerId,
@@ -157,20 +159,23 @@ export class FeedbackPage {
 
     const alert = await this.alert.create({
 
-      header: 'Success',
-      message: 'Thank you for the feedback',
-      buttons: [
-        {
-          text: 'Ok',
-          handler: () => {
-            this.call()
-            this.dismiss()
-          }
-        }
-      ]
+      message: '<img src="assets/thanks.jpg" class="thanks">',
+      // buttons: [
+      //   {
+      //     text: 'Ok',
+      //     handler: () => {
+      //       this.call()
+      //       this.dismiss()
+      //     }
+      //   }
+      // ]
     });
 
     await alert.present();
+    setTimeout(() => {
+      alert.dismiss()
+      this.dismiss()
+    }, 500);
 
   }
 
@@ -180,10 +185,10 @@ export class FeedbackPage {
 
   call() {
     new TablePage(this.customerService, this.modalContoller);
-    new UnreviewedFeedbackListPage(this.feedbackService, this.modalContoller)
   }
 
   checkCustomer(mobile) {
+    
     for (let i = 0; i < this.customersList.length; i++) {
       if (mobile.value == this.customersList[i].PhoneNumber) {
         this.customerId = this.customersList[i].Id
